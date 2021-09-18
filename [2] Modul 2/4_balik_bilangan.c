@@ -6,15 +6,15 @@ Input N baris pertama adalah N, baris berikutnya N buah angka
 
 int main (){
     int x;
-    scanf("%d", &x);
+    scanf("%d", &x);                    // Menerima Masuka
 
-    // Input Bilangan ke Array
+                                        // Input Bilangan ke Array
     int arr[100];
     for (int i = 0; i< x; i++){
         scanf("%d", &arr[i]);
     }
 
-    // Balik Bilangan
+                                        // Balik Bilangan
     for (int i = x-1; i >= 0; i--){
         printf("%d\n", arr[i]);
     }
