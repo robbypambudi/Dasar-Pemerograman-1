@@ -5,18 +5,14 @@
 
 int main (){
     int x;
-    while (1)
-    {
-        scanf("%d", &x);
-        for(int i = 1; i<=x;i++){
-            if(i%2==0){
-                printf(" * ");
-            }
-            else{
-                printf("%d", i);
-            }
+    scanf("%d", &x);
+    for(int i = 1; i<=x;i++){
+        if(i%2==0){             // Jika Genap
+            printf(" * ");
         }
-        printf("\n");
+        else{
+            printf("%d", i);    // Jika Ganjil
+        }
     }
-    
+    printf("\n");
 }
