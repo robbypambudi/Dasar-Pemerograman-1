@@ -4,28 +4,28 @@ Jangan Lupa Follow My GitHub Oke
 
 # Modul 1
 ## Link Soal
-** Percabangan **
+- Materi Tentang Percabangan
 ```
 https://github.com/AlproITS/DasarPemrograman/wiki/Modul-1:-Percabangan
 ```
 
 # Modul 2
 ## Link Soal 
-** Perulangan, Array, dan String **
+- Materi Tentang Perulangan, Array, dan String 
 ```
 https://github.com/AlproITS/DasarPemrograman/wiki/Modul-2:-Perulangan,-Array,-dan-String
 ```
 
 # Modul 3
 ## Link Soal 
-** Fungsi Dan Rekursi **
+- Materi Tentang Fungsi Dan Rekursi 
 ```
 https://github.com/AlproITS/DasarPemrograman/wiki/Modul-3:-Fungsi-dan-Rekursi
 ```
 
 # Modul 4
 ## Link Soal
-** Pointer dan Struct **
+- Materi Tentang Pointer dan Struct
 ```
 https://github.com/AlproITS/DasarPemrograman/wiki/Modul-4:-Pointer-dan-Struct
 ```
