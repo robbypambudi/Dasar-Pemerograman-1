@@ -1,16 +1,14 @@
 #include <stdio.h>
 
-
 int main (){
     int x;
-    while(1){
-        scanf("%d", &x);    
 
-        if (x%2 == 0){
-            printf("Genap\n");
-        }
-        else{
-            printf("Ganjil\n");
-        }
+    scanf("%d", &x);    
+
+    if (x%2 == 0){                  // Jika di Mod 2 = 0 maka bilangan tersebut bilangan ganjil
+        printf("Genap\n");
+    }
+    else{
+        printf("Ganjil\n");
     }
 }
