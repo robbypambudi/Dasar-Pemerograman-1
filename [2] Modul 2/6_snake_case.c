@@ -9,7 +9,7 @@ Nama variabel hanya terdiri dari huruf lowercase, uppercase, dan simbol undersco
 
 int main (){
     char b[1000];
-    gets(b);                                                // *Ingat Bilangan ASCII 
+    gets(b);                                       // *Ingat Bilangan ASCII 
     int panjang_string = strlen(b);         
 
     for (int i =0; i < panjang_string; i++){        
@@ -19,15 +19,13 @@ int main (){
         if (b[i] == 95){                                      // Jika huruf underscore/ 95
             //memmove(&b[i] , &b[i+1], panjang_string-i);     // Dapat Mengunakan ini manipulasi memori
 
-            for (int j = i; j < panjang_string; j++){         // Atau Ini
+            for (int j = i; j < panjang_string; j++){   // Atau Ini
                 b[j] = b[j+1];
             }
-            panjang_string -=1;                               // Panjang String Berkurang 1
-            i--;                                              // Nilai i jika i = 6 maka akan tetap atau tidak bertambah dengan cara dikurangi 1.
+            if(b[i] > 90){                              // Membuat Huruf Besar Setelah _ 
+                b[i] -= 32;
+            }
         }
     }
     printf("%s\n", b);                                          // Cetak Hasil
 }
-/* 
-
-*/ 
