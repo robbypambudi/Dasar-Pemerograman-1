@@ -16,7 +16,7 @@ int main (){
         if (b[i] <= 90 && b[i] >= 65){                      // Jika Bilangan ASCII berada di 65 <= x <= 90 Maka huruf Capital
             b[i] += 32;                                     // huruf ditambah dengan 32 agar menjadi kecil
         }
-        if (b[i] == 95){                                      // Jika huruf underscore/ 95
+        if (b[i] == 95){                                      // Jika huruf underscore 95
             //memmove(&b[i] , &b[i+1], panjang_string-i);     // Dapat Mengunakan ini manipulasi memori
 
             for (int j = i; j < panjang_string; j++){   // Atau Ini

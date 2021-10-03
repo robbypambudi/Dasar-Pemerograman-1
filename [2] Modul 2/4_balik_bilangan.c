@@ -1,6 +1,10 @@
 /*
 Program untuk mencetak N buah angka yang diinput secara terbalik
 Input N baris pertama adalah N, baris berikutnya N buah angka
+ 6
+ 1 2 3 4 5 6
+
+6 5 4 3 2 1
 */
 #include <stdio.h>
 

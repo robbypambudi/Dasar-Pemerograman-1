@@ -8,7 +8,7 @@ kemudian dihitung berapa banyak bilangan vokal yang terdapat pada string tersebu
 
 int main (){
     char kata[1000];
-    gets(kata);                                                  // mendatkan banyak kata
+    scanf("%[^\n]", kata);                                                  // mendatkan banyak kata
     int banyak_huruf, panjang_kata = strlen(kata);
     
     int vokal[5]    = {'a', 'i', 'u', 'e', 'o'},                 // Huruf Vokal biasa
