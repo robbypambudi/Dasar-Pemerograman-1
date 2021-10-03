@@ -27,5 +27,5 @@ int main (){
             }
         }
     }
-    printf("%s\n", b);                                          // Cetak Hasil
+    printf("%s\n", b);                                          
 }
