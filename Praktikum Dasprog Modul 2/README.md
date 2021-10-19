@@ -16,8 +16,10 @@
  Baris pertama berupa bilangan bulat q yang menunjukkan banyaknya sistem. Untuk setiap sistem, diberikan n yaitu banyak minimarket yang dibangun pada suatu sistem.
 
 **Constraints**
- - 0 < q < 69
- - 0 < n < 2^63 + 1
+ ```
+ 0 < q < 69
+ 0 < n < 2^63 + 1
+ ```
 
 **Output Format**
 
@@ -87,19 +89,21 @@ return 0;
 Bambang Sumanto adalah seorang detektif, ia mendapatkan sebuah pesan dari Sherlock Holmes yang harus dipecahkan, cara mecahinnya gimana? Kalo kalian bisa baca ini, harusnya udah bisa ya. Nah si Bambang ini mau buat program buat membaca pesan dari Sherlock Holmes, dan ngirim pesan ke Sherlock dengan cara yang sama. Untuk membedakan input, bambang memiliki input code dan key, code 1 untuk decrypt dan code 2 untuk encrypt. Selanjutnya key itu yang bakal dipake buat jadi kunci shift caesarnya. Yang diproses hanya huruf saja ya! Selain huruf di print tanpa diproses. Bantuin si bambang ya, plis. 
 
 **Input Format**
-Baris pertama adalah T, yaitu menyatakan jumlah kasus uji
+ Baris pertama adalah T, yaitu menyatakan jumlah kasus uji
 
 **Output Format**
-Setiap kasus uji memiliki 2 baris, baris pertama berisi C yaitu code dan K yaitu key, baris kedua merupakan kalimat yang ingin di encrypt/decrypt
+ Setiap kasus uji memiliki 2 baris, baris pertama berisi C yaitu code dan K yaitu key, baris kedua merupakan kalimat yang ingin di encrypt/decrypt
 
 **Constraints**
-0 ≤ T ≤ 100
-0 < C ≤ 2
-0 ≤ K ≤ 26
-kalimat tidak lebih dari 100 character
+```
+ 0 ≤ T ≤ 100
+ 0 < C ≤ 2
+ 0 ≤ K ≤ 26
+ kalimat tidak lebih dari 100 character
+ ```
 
 **Output Format**
-Tiap baris uji kasus berisi kalimat yang telah di proses
+ Tiap baris uji kasus berisi kalimat yang telah di proses
 
 **Sample Input 0**
 ```
@@ -214,17 +218,19 @@ nah, karena Bambang adalah Bang Gerbong, dia anti banget pake string dan array, 
 Maka, DILARANG PAKE ARRAY & STRING.H :), emang Bambang suka ngerepotin maaf ya temen".
 
 **Input Format**
-1 baris angka bilangan bulat N yaitu urutan gerbong kereta
+ 1 baris angka bilangan bulat N yaitu urutan gerbong kereta
 
 **Constraints**
-0 <= N <= 2^64 -1
-
+ ```
+ 0 <= N <= 2^64 -1
+ ```
 **Output Format**
-Jika sesuai dengan peraturan, maka outputkan "YAK BISA"
+ Jika sesuai dengan peraturan, maka outputkan "YAK BISA"
 
-Jika tidak sesuai dengan peraturan, maka outputkan "SALAH BAMBANG"
+ Jika tidak sesuai dengan peraturan, maka outputkan "SALAH BAMBANG"
 
 **Sample Input 0**
+
 ```
 4214554124
 ```
