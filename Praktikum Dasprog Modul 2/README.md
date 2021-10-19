@@ -88,10 +88,10 @@ return 0;
 
 Bambang Sumanto adalah seorang detektif, ia mendapatkan sebuah pesan dari Sherlock Holmes yang harus dipecahkan, cara mecahinnya gimana? Kalo kalian bisa baca ini, harusnya udah bisa ya. Nah si Bambang ini mau buat program buat membaca pesan dari Sherlock Holmes, dan ngirim pesan ke Sherlock dengan cara yang sama. Untuk membedakan input, bambang memiliki input code dan key, code 1 untuk decrypt dan code 2 untuk encrypt. Selanjutnya key itu yang bakal dipake buat jadi kunci shift caesarnya. Yang diproses hanya huruf saja ya! Selain huruf di print tanpa diproses. Bantuin si bambang ya, plis. 
 
-**Input Format**
+**Input Format** <br>
  Baris pertama adalah T, yaitu menyatakan jumlah kasus uji
 
-**Output Format**
+**Output Format**<br>
  Setiap kasus uji memiliki 2 baris, baris pertama berisi C yaitu code dan K yaitu key, baris kedua merupakan kalimat yang ingin di encrypt/decrypt
 
 **Constraints**
@@ -102,7 +102,7 @@ Bambang Sumanto adalah seorang detektif, ia mendapatkan sebuah pesan dari Sherlo
  kalimat tidak lebih dari 100 character
  ```
 
-**Output Format**
+**Output Format** <br>
  Tiap baris uji kasus berisi kalimat yang telah di proses
 
 **Sample Input 0**
@@ -217,14 +217,14 @@ nah, karena Bambang adalah Bang Gerbong, dia anti banget pake string dan array, 
 
 Maka, DILARANG PAKE ARRAY & STRING.H :), emang Bambang suka ngerepotin maaf ya temen".
 
-**Input Format**
+**Input Format**<br>
  1 baris angka bilangan bulat N yaitu urutan gerbong kereta
 
 **Constraints**
  ```
  0 <= N <= 2^64 -1
  ```
-**Output Format**
+**Output Format**<br>
  Jika sesuai dengan peraturan, maka outputkan "YAK BISA"
 
  Jika tidak sesuai dengan peraturan, maka outputkan "SALAH BAMBANG"
