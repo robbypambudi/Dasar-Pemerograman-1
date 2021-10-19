@@ -265,3 +265,254 @@ int main (){
 }
 ```
 
+## Soal No 4 Prima -> Polindrome -> Hasil
+
+Pada suatu hari, Anton sedang putus asa karena perjalanan Anton utuk mencari jodoh masih belum berhasil. Akhirnya Anton pun mempunyai sebuah ide, ia mengunduh sebuah aplikasi bernama Biro Jodoh Online dan dalam aplikasi tersebut setiap akun wanita memiliki id akun di sebelah nama mereka. Anton pun akhirnya memutuskan untuk meng-gacha akun-akun wanita yang akan dikontak olehnya yang dimana wanita tersebut harus memiliki id akun yang berupa bilangan bulat positif mulai dari 1 dan unik. Id akun yang unik tersebut merupakan suatu id yang jika dibaca dari belakang memiliki kesamaan jika dibaca dari depan. Id tersebut juga harus hanya bisa dibagi oleh bilangan 1 dan bilangan itu sendiri. Biro Jodoh Online telah diunduh oleh kurang dari 1000000 wanita. Urutan Anton memilih id yang akan dipilih adalah dengan mengacak sebuah angka dan mengambil angka setelahnya yang memenuhi syarat id unik. Tapi, Anton sangat pusing karena dibebani oleh rasa putus asanya, maka dia meminta bantuan kamu untuk membuatkan program dalam mencari id akun wanita yang sesuai dengan permintaan Anton.
+
+Note : Jangan dikuli ya ges :)
+
+**Input Format** <br>
+Beberapa baris, masing-masing berisi sebuah bilangan bulat.
+
+**Constraints**
+```
+Time Limtis : 1 Seconds
+Memory Limtis : 256 MB
+```
+
+**Output Format** <br>
+Beberapa baris, masing-masing keluarkan "#i : " dimana i merupakan urutan gacha, lalu diikuti angka sesuai dengan permintaan Anton, tetapi jika bilangan yang diinputkan merupakan bilangan unik itu sendiri, keluarkan bilangan tersebut.
+
+**Sample Input 0** <br>
+```
+9
+95
+131
+```
+**Sample Output 0** <br>
+```
+#1 : 11
+#2 : 101
+#3 : 131
+```
+
+**Source Code** <br>
+```
+#include <stdio.h>
+#include <stdbool.h>
+#define max 1000000
+int main (){
+    int awal = 0;
+    int prima[max];
+    bool isprime[max];
+
+    for (int i = 0; i <= max; i++){
+        isprime[i] = 1;
+    }
+
+    // Membuat Bilangan Prima
+    for (int i = 2; i <= max; i++){
+        if(isprime[i]){
+            prima[awal++] = i;
+
+            for (int j = i *2; j<= max; j+=i) isprime[j] = 0;
+        }
+    }
+
+    int temp, evl , poli = 0, pal[max];
+
+    // Cek apakah Polianderm
+    for (int i = 0; i < awal; i++){
+        temp = prima[i];
+        evl = 0;
+        while (temp >0){
+            evl = evl*10 + (temp%10);
+            temp /=10;
+        }
+        if (evl == prima[i]){
+            pal[poli++] = evl;
+        }
+    }
+
+    int n;
+    long long int gacha = 1;
+
+    while(scanf("%d", &n) != EOF){
+    //for (int i = 1; i <800; i++){
+      //  n = i;
+        if (n <= 2) printf("#%lld : 2\n", gacha++);
+        else if (n > pal[poli-1]) printf("#%lld : 1003001\n", gacha++);
+        else {
+            for (int i = 0; i < poli; i++){
+                if (n <= pal[i]){
+                    printf("#%lld : %d\n", gacha++, pal[i]);
+                    break;
+                }
+            }
+        }
+    }
+    return 0;
+}
+```
+
+## Soal No 5 Cek Koin Yang sama
+
+Malur ingin membeli kartu remi untuk main nanti. Dia mempunyai jumlah uang yang tidak terbatas, sayangnya dia hanya mempunyai uang itu dalam 2 jenis koin saja. 2 nilai koin tersebut berbeda. Sambil menunggu Malur antri beli, Malur ingin mengetahui berapa jumlah cara untuk membayar kartu ini.
+
+**Input Format** <br>
+baris pertama berisi bilangan bulat positif T yang merupakan jumlah testcase T baris berikutnya berisi 3 bilangan bulat positif yaitu A, B dan X. A merupakan nilai nominal koin pertama, B merupakan nilai nominal koin kedua, dan X merupakan harga dari kartu yang ingin dibeli.
+
+**Sample Input 0**
+```
+2
+3 2 10
+2 3 20
+```
+
+**Constraints**
+```
+1 ≤ T ≤ 100
+1 ≤ A, B ≤ 100
+A ≠ B
+1 ≤ X ≤ 2000000
+```
+
+**Output Format** <br>
+```
+2
+4
+```
+**Explanation** Testcase 1 : 3 2 10 <br>
+```
+untuk harga 10 dapat dibeli dengan cara :
+
+    5 koin 2 + 0 koin 3
+    2 koin 2 + 2 koin 3
+```
+
+**Sample Input 0**
+```
+2
+3 2 10
+2 3 20
+```
+
+**Sample Output 0**
+```
+2
+4
+```
+
+**Source Code**
+```
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int data[n][3];
+    for(int x=0; x<n; x++){
+        scanf("%d%d%d", &data[x][0], &data[x][1], &data[x][2]);
+    }
+    for(int x= 0; x<n; x++){
+        int temp=0;
+        
+        for(int i= 0; i<=data[x][2]; i++){
+            int j=0;
+           
+            while((data[x][0]*i)+
+                        (data[x][1]*j)<=data[x][2]){
+               
+                if((data[x][0]*i)+(data[x][1]*j)
+                        ==data[x][2]){
+                    temp++;
+                }
+                j++;
+            }
+        }
+        printf("%d\n", temp);
+    }
+    return 0;
+}
+```
+
+### Soal No 6 Scaning Area Tanah
+Malur mempunyai tambang aluminium PT. Sukses. Seperti nama perusahaannya, Malur ingin melakukan penggalian dengan baik dan menjadi sukses. Sebelum dilakukan penggalian dilakukan scanning pada tanah berukuran x * y yang akan digali. Dalam penggalian digunakan sebuah alat dimana menggali petak berukuran s*s
+
+**input format** <br>
+baris pertama berisi x dan y. y baris berikutnya berisi x jumlah alluminium bernilai m. baris terakhir berisi s ukuran alat
+
+```
+3 3
+1 1 1
+2 1 1
+1 1 1
+2
+```
+
+**Constraints**
+```
+1 ≤ x ≤ 100
+1 ≤ y ≤ 100
+0 < m < 2^31
+0 < s ≤ 10
+```
+
+**Output format** <br>
+outputkan jumlah maksimum alluminium dalam sekali gali
+```
+5
+```
+
+**Sample Input 0**
+```
+3 3
+1 1 1
+2 1 1
+1 1 1
+2
+```
+
+**Sample Output 0**
+```
+5
+```
+
+**Source Code**
+```
+#include <stdio.h>
+
+int main (){
+    int x, y;
+    int s;
+    scanf("%d %d", &x, &y);
+    int A[y][x];
+
+    for (int i = 0; i <y; i++){
+        for (int j=0; j<x; j++){
+            scanf("%d", &A[i][j]);
+        }
+    }
+    scanf("%d", &s);
+    int terbeser = 0;
+    int hasil = 0;
+    if (s != 0 && x != 0 && y != 0){
+        for (int i = 0; i <= y -s; i++){
+            for (int j = 0; j <= x - s; j++){
+                hasil = 0;
+                for (int  a = i; a < i + s; a++){
+                    for (int b = j; b < j + s; b++){
+                        hasil += A[a][b];
+                        // printf("%d %d\n", a, b);
+                    }
+                }
+            if (hasil > terbeser){
+                terbeser = hasil;
+                }
+            }
+        }
+        printf("%d\n", terbeser);
+    }
+}
+```
+
+
