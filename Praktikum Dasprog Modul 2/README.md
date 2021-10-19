@@ -2,7 +2,7 @@
 
 ## Soal No 1 Mencari maksimal area dari lingkaran yang dibagi-bagi
 
-### Sumber Penyelesaian 
+**Sumber Penyelesaian**
 - https://en.wikipedia.org/wiki/Dividing_a_circle_into_areas
 
  SYZi merupakan perusahan yang berfokus pada bidang minimarket. Pada tahun 2042 perusahaan SYZi berencana untuk menguasai perekonomian Benua Asia dengan cara membangun minimarket di berbagai lahan Benua Asia.
@@ -11,24 +11,24 @@
 
  Jika perusahaan SYZi membangun n minimarket yang tidak saling berhimpit pada sekeliling lingkaran, tentukan berapa banyak pembagian lahan penjualan per sistem!
 
- *** Input Format *** 
+**Input Format**
 
  Baris pertama berupa bilangan bulat q yang menunjukkan banyaknya sistem. Untuk setiap sistem, diberikan n yaitu banyak minimarket yang dibangun pada suatu sistem.
 
- *** Constraints *** 
+**Constraints**
  - 0 < q < 69
  - 0 < n < 2^63 + 1
 
- *** Output Format *** 
+**Output Format**
 
  Untuk setiap sistem/kasus uji, keluarkan banyaknya lahan penjualan. Namun, karena sistem yang dibuat oleh perusahaan SYZi masih dalam tahap uji coba, maka keluarkan banyaknya lahan penjualan yang dihasilkan dimodulo 10^9 + 7. 
 
- *** Sample Input 0 ***
+**Sample Input 0**
 ```
 5
 1 2 3 4 5
 ```
- *** Sample Output 0 ***
+**Sample Output 0**
 ```
 1
 2
@@ -37,20 +37,19 @@
 16
 ```
 
- *** Sample Input 1 ***
+**Sample Input 1**
 ```
 3
 16 12 2003
 ```
 
- *** Sample Output 0 ***
+**Sample Output 0**
 ```
 1941
 562
 670500828
 ```
-
-*** Source Code ***
+**Source Code**
 ```
 #include <stdio.h>
 #define MODD 1000000007
@@ -87,22 +86,22 @@ return 0;
 
 Bambang Sumanto adalah seorang detektif, ia mendapatkan sebuah pesan dari Sherlock Holmes yang harus dipecahkan, cara mecahinnya gimana? Kalo kalian bisa baca ini, harusnya udah bisa ya. Nah si Bambang ini mau buat program buat membaca pesan dari Sherlock Holmes, dan ngirim pesan ke Sherlock dengan cara yang sama. Untuk membedakan input, bambang memiliki input code dan key, code 1 untuk decrypt dan code 2 untuk encrypt. Selanjutnya key itu yang bakal dipake buat jadi kunci shift caesarnya. Yang diproses hanya huruf saja ya! Selain huruf di print tanpa diproses. Bantuin si bambang ya, plis. 
 
-*** Input Format ***
+**Input Format**
 Baris pertama adalah T, yaitu menyatakan jumlah kasus uji
 
-*** Output Format ***
+**Output Format**
 Setiap kasus uji memiliki 2 baris, baris pertama berisi C yaitu code dan K yaitu key, baris kedua merupakan kalimat yang ingin di encrypt/decrypt
 
-*** Constraints ***
+**Constraints**
 0 ≤ T ≤ 100
 0 < C ≤ 2
 0 ≤ K ≤ 26
 kalimat tidak lebih dari 100 character
 
-*** Output Format ***
+**Output Format**
 Tiap baris uji kasus berisi kalimat yang telah di proses
 
-*** Sample Input 0 ***
+**Sample Input 0**
 ```
 2
 1 1
@@ -110,13 +109,15 @@ bambang suka makan
 2 5
 wvhwvib npfv hvfvi
 ```
-*** Sample output 0 ***
+
+**Sample output 0**
+
 ```
 azlazmf rtjz lzjzm
 bambang suka makan
 ```
 
-*** Source Code ***
+**Source Code**
 ```
 #include <stdio.h>
 #include <string.h>
@@ -212,28 +213,28 @@ nah, karena Bambang adalah Bang Gerbong, dia anti banget pake string dan array, 
 
 Maka, DILARANG PAKE ARRAY & STRING.H :), emang Bambang suka ngerepotin maaf ya temen".
 
-*** Input Format ***
+**Input Format**
 1 baris angka bilangan bulat N yaitu urutan gerbong kereta
 
-*** Constraints ***
+**Constraints**
 0 <= N <= 2^64 -1
 
-*** Output Format ***
+**Output Format**
 Jika sesuai dengan peraturan, maka outputkan "YAK BISA"
 
 Jika tidak sesuai dengan peraturan, maka outputkan "SALAH BAMBANG"
 
-*** Sample Input 0 ***
+**Sample Input 0**
 ```
 4214554124
 ```
 
-*** Sample Ouput 0 ***
+**Sample Ouput 0**
 ```
 YAK BISA
 ```
 
-*** Source Code ***
+**Source Code**
 ```
 #include <stdio.h>
 
