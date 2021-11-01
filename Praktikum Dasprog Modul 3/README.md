@@ -250,6 +250,16 @@ int main()
 }
 ```
 
+---
+
 ## <p style="text-align:center; color:red;">Malur Pesawat</p>
 
 **Kata Kunci : Minimum Triangle Sum**
+
+Pesawat Jet milik Perusahaan Malur ingin mempromosikan produk mereka kembali karena kalah bersaing dengan perusahaan yang lain, kekalahan mereka diakibatkan oleh lamanya kedatangan pesawat dari bandara ke sasaran tempat promosi, sehingga Manajer Perusahaan Malur meminta bantuan kepada kalian untuk membuat program yang bisa mencetak rute terpendek pesawat Jet untuk bisa sampai di tempat tujuan tepat waktu.
+
+Rute yang akan dilewati oleh pesawat membentuk suatu segitiga dengan sebaran titik keberangkatan ke titik promosi merupakan tinggi segitiga (h), sedangkan di antara titik keberangkatan ke titik promosi terdapat bandara-bandara (ditandai dengan node) yang mengharuskan pesawat berhenti untuk mengisi bahan bakar, tiap node memiliki suatu nilai node (n) yang menunjukkan jarak bandara keberangkatan dan bandara kedatangan.
+
+### Input Format
+
+<img src="https://s3.amazonaws.com/hr-assets/0/1635039602-de63a57960-Screenshot_1.png" alt="Input Format">
