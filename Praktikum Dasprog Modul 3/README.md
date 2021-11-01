@@ -2,7 +2,7 @@
 
 -   Praktikum Dasprog Modul 3
 
-## Soal No 1 : Anton Memanggil Dirinya
+## <p style = 'color: red; text-align:center'>Soal No 1 : Anton Memanggil Dirinya</p>
 
 **KATA KUNCI : Bilangan Fibonaci, Rekursif**
 
@@ -93,7 +93,9 @@ int main()
 
 ---
 
-## Soal No 2 : Triangle Ladder
+## <p style="color: red; text-align:center" >Soal No 2 : Triangle Ladder</p>
+
+**Kata Kunci : Maxsimum Triangle Sum**
 
 Kamu diminta untuk membuat tangga segitiga yang memiliki karakteristik khusus dimana susunan paling bawah merupakan pondasi tangga dengan input yang telah diberikan dan susunan di atasnya merupakan penjumlahan-penjumlahan dari bilangan satu dengan bilangan di sebelahnya berdasarkan susunan tangga di bawahnya. Setiap bilangan pada suatu susunan dipisahkan dengan spasi dan setiap susunan dipisahkan dengan newline.
 
@@ -247,3 +249,7 @@ int main()
     }
 }
 ```
+
+## <p style="text-align:center; color:red;">Malur Pesawat</p>
+
+**Kata Kunci : Minimum Triangle Sum**
