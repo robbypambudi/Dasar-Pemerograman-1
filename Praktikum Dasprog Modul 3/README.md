@@ -262,4 +262,271 @@ Rute yang akan dilewati oleh pesawat membentuk suatu segitiga dengan sebaran tit
 
 ### Input Format
 
-<img src="https://s3.amazonaws.com/hr-assets/0/1635039602-de63a57960-Screenshot_1.png" alt="Input Format">
+<img src="https://s3.amazonaws.com/hr-assets/0/1635039602-de63a57960-Screenshot_1.png" alt="Input Format" >
+
+Baris pertama merupakan nilai dari tinggi segitiga (h) berupa integer, Untuk tiap baris selanjutnya merupakan nilai node n(y,x) dimana y merupakan posisi tingkatan dalam segitiga dan x merupakan posisi elemen dari kiri dalam tingkat tertentu.
+
+```
+h
+n(1,1)
+n(2,1) n(2,2)
+n(3,1) n(3,2) n(3,3)
+. . .
+n(h,1) n(h,2) . . . n(h,h)
+```
+
+### Constraints
+
+```
+1 ≤ h ≤ 30
+1 ≤ n(y,x) ≤ 1.000
+```
+
+### Output Format
+
+Print solusi yang didapatkan dengan menandai rute-terpendek yang menjadi solusi dengan nilai -1
+
+```
+-1
+7 -1
+2 -1 6
+8 -1 9 4
+```
+
+Sample Input dan Output merupakan kasus yang sama dengan Contoh permasalahan dan solusi yang tertera di atas, dengan Format Output sebagai berikut
+
+<img src="https://s3.amazonaws.com/hr-assets/0/1635040000-19f8165942-Screenshot_2.png" alt="Gambar 2">
+
+### Sample Input 0
+
+```
+4
+3
+7 4
+2 4 6
+8 5 9 4
+```
+
+### Sample Output 0
+
+```
+-1
+7 -1
+2 -1 6
+8 -1 9 4
+```
+
+### Langkah Penyelesaian
+
+```
+Refrensi    : http://www.zrzahid.com/min-sum-path-in-triangle/
+            : https://www.geeksforgeeks.org/minimum-sum-path-triangle/
+
+1. Membuat Fungsi Untuk Mencari Jalur Minimum
+2. Menandai Jalur Jalur yang mempumyai nilai kecil
+3. Mencetak Nilai dan mengubah nilai yang ditandai menjadi -1
+```
+
+### Code
+
+```
+#include <stdio.h>
+
+
+long long h, arr[1000][1000];
+long long temp[1000][1000];
+long long path[1000][1000];
+long long min(int x, int y)
+{
+    if (temp[x][y] != 0)
+        return temp[x][y];
+    if (x == h)
+        return temp[x][y] = arr[x][y];
+
+    if (min(x + 1, y) < min(x + 1, y + 1))
+    {
+        temp[x][y] = arr[x][y] + min(x + 1, y);
+        path[x][y] = '~';
+    }
+    else
+    {
+        temp[x][y] = arr[x][y] + min(x + 1, y + 1);
+        path[x][y] = 'p';
+    }
+    return temp[x][y];
+}
+int main()
+{
+
+    scanf("%lld", &h);
+    for (int i = 1; i <= h; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            scanf("%lld", &arr[i][j]);
+            temp[i][j] = 0;
+        }
+    }
+    min(1,1);
+    arr[1][1] = -1;         // Edited
+    int j = 1;
+    for (int i = 1; i < h; i++)
+    {
+        if (path[i][j] == '~')
+        {
+            arr[i + 1][j] = -1;
+        }
+        else if (path[i][j] == 'p')
+        {
+            j++;
+            arr[i + 1][j] = -1;
+        }
+    }
+
+    for (int i = 1; i <= h; i++)
+    {
+        for (int k = 1; k <= i; k++)
+        {
+            printf("%lld ", arr[i][k]);
+        }
+        printf("\n");
+    }
+}
+```
+
+## Soal No 3 : Monsterbuster
+
+**Kata Kunci : N problem Solving, Backtracking**
+
+Bambang Sumanto adalah pembuat game bernama monsterbuster, bambang memiliki suatu logika game yaitu bom biru yang akan meledak dengan arah seperti gambar dibawah.
+<img src="https://s3.amazonaws.com/hr-assets/0/1606570681-ac4d3e5bc4-bom.png" alt="Monster Buster">
+Jika bambang ingin membuat sebuah peta NxN, dan ingin meletakkan N bom biru, tetapi bom biru tidak boleh diletakkan di path ledakkan bom lain, carilah jumlah peletakkan bom yang valid!
+
+### Input Format
+
+```
+Baris pertama yaitu N
+```
+
+### Constraints
+
+```
+1 ≤ N ≤ 12
+```
+
+### Ouput Format
+
+```
+Bilangan bulat Jumlah Solusi
+```
+
+### Sample Input 0
+
+```
+4
+```
+
+### Sample Output 0
+
+```
+2
+```
+
+### Explanation 0
+
+<img src="https://s3.amazonaws.com/hr-assets/0/1606783997-8647950160-ScreenShot2020-12-01at07.52.22.png" alt="Explanation_of_MonsterBuster">
+jadi banyaknya ada 2
+
+### Langkah Penyelesaian
+
+```
+Refrensi    : https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/
+            : https://www.techiedelight.com/print-possible-solutions-n-queens-problem/
+            : https://tutorialspoint.dev/algorithm/backtracking-algorithms/printing-solutions-n-queen-problem
+
+1. Membuat fungsi untuk menentukan apakah jalur tersebut Memenuhi Persyaratan atau tidak
+2. Jika memenuhi akan memangil fungsi printsolution
+3. Didalam fungsi tersebut ketika dipangil Variabel Jumlah akan bertambah 1
+4. Jika Fungsi sudah selesai Cetak hasil dari variabel Jumlah
+```
+
+### Code
+
+```
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+int N, Jumlah = 0;
+void printSolution()
+{
+    Jumlah += 1;                                        // Jika fungsi dipangil maka jumlah akan bertambah 1
+}
+
+bool isSafe(int board[N][N], int row, int col)
+{
+    int i, j;
+
+    for (i = 0; i < col; i++)                           // Cek bari di sisi kiri
+        if (board[row][i])
+            return false;
+
+    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)  // Periksa Diagonal atas sisi kiri
+        if (board[i][j])
+            return false;
+
+    for (i = row, j = col; j >= 0 && i < N; i++, j--)   // Cek Diagonal bawah di sisi kiri
+        if (board[i][j])
+            return false;
+
+    return true;            // Jika if diatas tidak memenuhi maka posisi row,col adalah memenuhi
+}
+
+bool selesaikan(int board[N][N], int col)
+{
+
+    if (col == N)
+    {
+        printSolution();           // Memanngil fungsi printsolution untuk didata
+        return true;
+    }
+
+    bool res = false;
+    for (int i = 0; i < N; i++)
+    {
+        /* Check if queen can be placed on
+        board[i][col] */
+        if (isSafe(board, i, col))
+        {
+            board[i][col] = 1;
+
+            res = selesaikan(board, col + 1);
+
+            board[i][col] = 0; // BACKTRACK
+        }
+    }
+
+    return res;
+}
+
+void Solve()
+{
+    int board[N][N];
+    memset(board, 0, sizeof(board));    // Set semua nilai ke 0
+
+    if (selesaikan(board, 0) == false)
+    {
+        return;
+    }
+
+    return;
+}
+
+int main()
+{
+    scanf("%d", &N);
+    Solve();                        // memanggil fungsi inti
+
+    printf("%d\n", Jumlah);         // mencetak hasil
+}
+```
