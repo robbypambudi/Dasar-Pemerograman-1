@@ -252,7 +252,7 @@ int main()
 
 ---
 
-## <p style="text-align:center; color:red;">Malur Pesawat</p>
+## <p style="text-align:center; color:red;">Soal No 3 : Malur Pesawat</p>
 
 **Kata Kunci : Minimum Triangle Sum**
 
@@ -394,7 +394,7 @@ int main()
 }
 ```
 
-## Soal No 3 : Monsterbuster
+## Soal No 4 : Monsterbuster
 
 **Kata Kunci : N problem Solving, Backtracking**
 
@@ -528,5 +528,204 @@ int main()
     Solve();                        // memanggil fungsi inti
 
     printf("%d\n", Jumlah);         // mencetak hasil
+}
+```
+
+## Soal No 5 : Si Paling Bisa Baca Map
+
+**Kata Kunci : Backtracking,Maze**
+
+SYZi merupakan cowok pekerja keras yang tidak pernah libur bekerja from dusk till dawn. Suatu saat ia lelah bekerja dan memutuskan untuk pergi healing bersama istrinya. Mereka melakukan perjalanan keliling Pulau Jawa menggunakan mobil. Seperti biasa, SYZi menyetir dan menyerahkan urusan navigasi kepada istrinya. Pada aplikasi map yang digunakan, diberikan posisi awal (A) dan tujuan(B) sekaligus jalur yang bisa diambil. Bantu istri SYZi menentukan jalur terpendek untuk sampai tujuan!
+
+### Input Format
+
+```
+5 <= X, Y <= 15
+```
+
+### Ouput Format
+
+Output merupakan map section yang sudah terdapat pilihan jalur terpendek.
+
+Keterangan : x merupakan path yang diambil
+
+### Sample Input 0
+
+```
+15 15
+###############
+##B.....#######
+#######......##
+#######......##
+##......#######
+##......#######
+#######......##
+#######......##
+##......#######
+##......#######
+#######......##
+#######......##
+##......#######
+##..........A##
+###############
+```
+
+### Sanoke Output 0
+
+```
+###############
+##Bxxxxx#######
+#######x.....##
+#######x.....##
+##.....x#######
+##.....x#######
+#######x.....##
+#######x.....##
+##.....x#######
+##.....x#######
+#######x.....##
+#######x.....##
+##.....x#######
+##.....xxxxxA##
+###############
+```
+
+### Langkah Penyelesaian
+
+```
+Refrensi        : https://www.geeksforgeeks.org/rat-in-a-maze-backtracking-2/
+                : https://www.youtube.com/watch?v=PwxGTHraMNg
+
+Permasalahan    : Terdapat Jalur yang ganda / 2 Petak
+
+Solusi
+1. Membuat Fungsi Untuk Mencari Nilai Jarak Tercepat Yang kemudian disebut minimofroute
+2. Kemudian Nilai tersebut disimpang untuk digunakan
+3, Membuat fungsi untuk menandai jalan dengan mengunaan indikator Nilai tercepat yang kemudian disebut cetakroute
+4. Ketika Nilai Min Fungsi cetakrout == Nilai min fungsi minimofroute maka  maka array yang memenuhi diganti dengan x
+5. Memangil Fungsi cetakrout2 untuk mencetak array tersebut.
+```
+
+### Code
+
+```
+#include <stdio.h>
+#include <stdbool.h>
+
+int x, y, ai, aj, bi, bj, min = 999999;
+char bambang[20][20];
+bool printed = false;
+
+void minimofroute(int P, int O, int jml_perulangan)
+{
+    if (bambang[P][O] == '#')
+        return;
+    if (P == bi && O == bj)
+    {
+        min = jml_perulangan < min ? jml_perulangan : min;
+        return;
+    }
+    // printf("%d %d", P, O);
+    bambang[P][O] = '#';
+    minimofroute(P + 1, O, jml_perulangan + 1); // Ke Bawah
+    minimofroute(P - 1, O, jml_perulangan + 1); // Ke Atas
+    minimofroute(P, O + 1, jml_perulangan + 1); // Ke Kanan
+    minimofroute(P, O - 1, jml_perulangan + 1); // Ke Kiri
+    bambang[P][O] = '.';
+
+    return;
+}
+
+void cetakroute(int P, int O, int jml_perulangan)
+{
+    if (printed)
+    {
+        return;
+    }
+    if (P == bi && O == bj)
+    {
+        if (min != jml_perulangan)
+            return;
+        printed = true;
+        return;
+    }
+
+    if (bambang[P][O] == '#')
+        return;
+    if (bambang[P][O] == 'x')
+        return;
+
+    bambang[P][O] = 'x';
+    cetakroute(P + 1, O, jml_perulangan + 1); // Ke bawah
+    cetakroute(P - 1, O, jml_perulangan + 1); // Ke atas
+    cetakroute(P, O + 1, jml_perulangan + 1); // Ke Kanan
+    cetakroute(P, O - 1, jml_perulangan + 1); // Ke Kiri retrun selesai
+
+    if (printed)
+        return;
+    bambang[P][O] = '.';
+
+    return;
+}
+
+void cetakroute2()
+{
+
+    for (int i = 1; i <= y; i++)
+    {
+        for (int j = 1; j <= x; j++)
+        {
+            if (i == ai && j == aj)
+            {
+                printf("A");
+            }
+            else if (i == bi && j == bj)
+            {
+                printf("B");
+            }
+            else
+            {
+                printf("%c", bambang[i][j]);
+            }
+        }
+        printed = true;
+        printf("\n");
+    }
+    return;
+}
+
+int main()
+{
+
+    scanf("%d %d", &x, &y);
+    for (int i = 0; i <= x + 1; i++)
+    {
+        for (int j = 0; j <= y + 1; j++)
+        {
+            bambang[i][j] = '#';
+        }
+    }
+    for (int i = 1; i <= y; i++)
+    {
+        for (int j = 1; j <= x; j++)
+        {
+            scanf(" %c", &bambang[i][j]);
+            if (bambang[i][j] == 'A')
+            {
+                ai = i;
+                aj = j;
+            }
+            else if (bambang[i][j] == 'B')
+            {
+                bi = i;
+                bj = j;
+            }
+        }
+    }
+    minimofroute(ai, aj, 0);
+    cetakroute(ai, aj, 0);
+    cetakroute2();
+
+    return 0;
 }
 ```
