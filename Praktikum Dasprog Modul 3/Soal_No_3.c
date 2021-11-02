@@ -1,76 +1,61 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
 
-int N, Jumlah = 0;
-void printSolution()
+long long h, arr[1000][1000];
+long long temp[1000][1000];
+long long path[1000][1000];
+long long min(int x, int y)
 {
-    Jumlah += 1;
-}
+    if (temp[x][y] != 0)
+        return temp[x][y];
+    if (x == h)
+        return temp[x][y] = arr[x][y];
 
-bool isSafe(int board[N][N], int row, int col)
-{
-    int i, j;
-
-    for (i = 0; i < col; i++)
-        if (board[row][i])
-            return false;
-
-    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-        if (board[i][j])
-            return false;
-
-    for (i = row, j = col; j >= 0 && i < N; i++, j--)
-        if (board[i][j])
-            return false;
-
-    return true;
-}
-
-bool selesaikan(int board[N][N], int col)
-{
-
-    if (col == N)
+    if (min(x + 1, y) < min(x + 1, y + 1))
     {
-        printSolution();
-        return true;
+        temp[x][y] = arr[x][y] + min(x + 1, y);
+        path[x][y] = '~';
     }
-
-    bool res = false;
-    for (int i = 0; i < N; i++)
+    else
     {
-        /* Check if queen can be placed on
-        board[i][col] */
-        if (isSafe(board, i, col))
+        temp[x][y] = arr[x][y] + min(x + 1, y + 1);
+        path[x][y] = 'p';
+    }
+    return temp[x][y];
+}
+int main()
+{
+
+    scanf("%lld", &h);
+    for (int i = 1; i <= h; i++)
+    {
+        for (int j = 1; j <= i; j++)
         {
-            board[i][col] = 1;
-
-            res = selesaikan(board, col + 1);
-
-            board[i][col] = 0; // BACKTRACK
+            scanf("%lld", &arr[i][j]);
+            temp[i][j] = 0;
+        }
+    }
+    min(1, 1);
+    arr[1][1] = -1; // Edited
+    int j = 1;
+    for (int i = 1; i < h; i++)
+    {
+        if (path[i][j] == '~')
+        {
+            arr[i + 1][j] = -1;
+        }
+        else if (path[i][j] == 'p')
+        {
+            j++;
+            arr[i + 1][j] = -1;
         }
     }
 
-    return res;
-}
-
-void Solve()
-{
-    int board[N][N];
-    memset(board, 0, sizeof(board));
-
-    if (selesaikan(board, 0) == false)
+    for (int i = 1; i <= h; i++)
     {
-        return;
+        for (int k = 1; k <= i; k++)
+        {
+            printf("%lld ", arr[i][k]);
+        }
+        printf("\n");
     }
-
-    return;
-}
-
-int main()
-{
-    scanf("%d", &N);
-    Solve();
-
-    printf("%d\n", Jumlah);
 }
