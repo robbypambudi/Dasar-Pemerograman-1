@@ -394,6 +394,8 @@ int main()
 }
 ```
 
+---
+
 ## Soal No 4 : Monsterbuster
 
 **Kata Kunci : N problem Solving, Backtracking**
@@ -530,6 +532,8 @@ int main()
     printf("%d\n", Jumlah);         // mencetak hasil
 }
 ```
+
+---
 
 ## Soal No 5 : Si Paling Bisa Baca Map
 
@@ -728,4 +732,119 @@ int main()
 
     return 0;
 }
+```
+
+---
+
+## Soal No 6 : Si Paling Kane
+
+SYZi dan istrinya telah memutuskan untuk pergi ke Pantai Watu Ulo sebagai destinasi healing pertama mereka. Sesampainya disana mereka disambut oleh siluman ular yang berniat untuk mengganggu mereka pacaran. SYZi berniat membuat desain pertahanan 2D untuk menghalau siluman ular tersebut.
+Namun sayangnya siluman tersebut bisa melakukan kagebunshin dengan ketentuan:
+
+1.Ular(~) utama akan selalu ada di sisi paling kiri.
+
+2.Ular(~) utama bisa lebih dari satu.
+
+3.Ular(~) hanya bisa bergerak ke kanan jika tidak menabrak dinding(#).
+
+4.Ular(~) tidak bisa mundur(ke kiri) dan tidak bisa bergerak secara diagonal.
+
+6.Ular(~) akan melalukan kagebunshin jika menabrak dinding.
+
+6.Ular(~) hanya bisa kagebunshin ke atas dan bawah jika ada dinding didepannya.
+
+7.Ular(~) tidak bisa melakukan kagebunshin jika ada dinding yang menghalangi.
+
+SYZi pun meminta bantuan anda untuk menentukan apakah desain pertahanan tersebut membuat siluman ular bisa lewat atau tidak. Dengan Ukuran desain N untuk horizontal dan M untuk vertikal.
+
+### Input Format
+
+```
+N M
+Desain pertahanan 2D dinding(#) lokasi ular utama(~) jalan yang bisa dilewati ular(.)
+```
+
+### Constraints
+
+```
+1<= N,M <= 9
+```
+
+### Output Format
+
+Keluarkan "Nah gini kan kane" jika desain pertahanannya berhasil Keluarkan "Siluman ambis!" jika desain pertahanannya gagal
+
+### Sample Input 0
+
+```
+6 9
+......
+.....#
+....#.
+...#..
+~.#...
+...#..
+....#.
+.....#
+......
+```
+
+### Sample Output 0
+
+```
+Siluman ambis!
+```
+
+### Sample Input 1
+
+```
+6 9
+......
+.#....
+...#..
+....#.
+~....#
+....#.
+...#..
+.#....
+......
+```
+
+### Sample Input 1
+
+```
+Nah gini kan kane
+```
+
+### Langkah penyelesaian
+
+```
+Inti dari soal tersebut adalah ketika baris belakang mendeteksi ada '~' maka langsung saja cetak siluman ambis
+
+1. Membuat Program untuk melakukan ketentuan- ketentuan yang ada di soal
+2. Ketika Ketentuan sudeh dipenuhi maka cek apakah ular / '~' ada di baris belakang
+3. Cetak sesuai dengan ketentuan
+4. Selesai
+
+Bentuk Ular dari Sample Input 0 :
+....~~
+...~~#
+..~~#.
+.~~#..
+~~#...
+.~~#..
+..~~#.
+...~~#
+....~~
+
+Bentuk Ular dari Sample Input 1 :
+......
+.#....
+...#..
+....#.
+~~~~~#
+....#.
+...#..
+.#....
+......
 ```
