@@ -165,8 +165,8 @@ int main()
     // Cetak Hasil
     combinestring(nama_depan, nama_belakang, nama_dep_bel);
     printf("[*] Input is Valid\n");
-    // Low_Upper(nama_dep_bel);
     printf("[*] Nama \t\t: %s\n", nama_dep_bel);
+    Low_Upper(nama_dep_bel);
     printf("[*] Nama Konversi \t: %s\n", nama_dep_bel);
     HappyBirthday(tanggal, bulan_num, tahun);
     return 0;
