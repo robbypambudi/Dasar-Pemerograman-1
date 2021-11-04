@@ -94,6 +94,7 @@ void combinestring(char nama_depan[], char nama_belakang[], char nama_dep_bel[])
     strcat(nama_dep_bel, nama_depan);    // Membuat var nama_dep_bel = nama_depan
     strcat(nama_dep_bel, " ");           // Menambahkan Spasi
     strcat(nama_dep_bel, nama_belakang); // Mengabungkan Kedua String
+    return;
 }
 
 void Low_Upper(char nama_dep_bel[])
@@ -136,6 +137,7 @@ void HappyBirthday(int tanggal, int bulan, int tahun)
     jml_tahun = YEAR - tahun;
 
     printf("[*] Usia \t\t: %d Tahun %d Bulan %d Hari\n", jml_tahun, jml_bulan, jml_hari);
+    return;
 }
 
 int main()
@@ -166,4 +168,5 @@ int main()
     Low_Upper(nama_dep_bel);
     printf("[*] Nama Konversi \t: %s\n", nama_dep_bel);
     HappyBirthday(tanggal, bulan_num, tahun);
+    return 0;
 }
