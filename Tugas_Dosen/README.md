@@ -10,9 +10,10 @@
 
 **Buatlah Program dengan fungsi utama sebagai berikut :**
 **Input:** Nama Depan, Nama Belakangm Kelahiran ( Tanggal, Bulan dan Tahun)
+Bulan ditulis dengan string
 
--   Bulan ditulis dengan string
-    **Proses**
+**Proses**
+
 -   Validasi Inputan (+)
 -   Menggabungkan nama depan dan nama belakang menjadi nama lengkap, dipisahkan dengan spasi
 -   Mengkonversi setiap huruf pada nama lengkap, setiap huruf di urutan ganjil adalah huruf besar sedangkan huruf di urutan genap adalah huruf kecil
