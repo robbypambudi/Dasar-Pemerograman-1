@@ -91,7 +91,8 @@ bool validation(char nama_depan[], char nama_belakang[], int tanggal, char bulan
 
 void combinestring(char nama_depan[], char nama_belakang[], char nama_dep_bel[])
 {
-    strcat(nama_dep_bel, nama_depan);    // Membuat var nama_dep_bel = nama_depan
+
+    strcpy(nama_dep_bel, nama_depan);    // Membuat var nama_dep_bel = nama_depan
     strcat(nama_dep_bel, " ");           // Menambahkan Spasi
     strcat(nama_dep_bel, nama_belakang); // Mengabungkan Kedua String
     return;
@@ -111,7 +112,7 @@ void Low_Upper(char nama_dep_bel[])
         }
         else
         {
-            if (nama_dep_bel[i] <= 'Z')
+            if (nama_dep_bel[i] < 'a')
                 nama_dep_bel[i] += 32;
         }
     }
@@ -142,10 +143,10 @@ void HappyBirthday(int tanggal, int bulan, int tahun)
 
 int main()
 {
-    char nama_depan[30],
-        nama_belakang[30],
+    char nama_depan[50],
+        nama_belakang[50],
         bulan[20],
-        nama_dep_bel[60];
+        nama_dep_bel[50];
 
     int tanggal, tahun;
     int bulan_num;
@@ -164,8 +165,8 @@ int main()
     // Cetak Hasil
     combinestring(nama_depan, nama_belakang, nama_dep_bel);
     printf("[*] Input is Valid\n");
+    // Low_Upper(nama_dep_bel);
     printf("[*] Nama \t\t: %s\n", nama_dep_bel);
-    Low_Upper(nama_dep_bel);
     printf("[*] Nama Konversi \t: %s\n", nama_dep_bel);
     HappyBirthday(tanggal, bulan_num, tahun);
     return 0;
