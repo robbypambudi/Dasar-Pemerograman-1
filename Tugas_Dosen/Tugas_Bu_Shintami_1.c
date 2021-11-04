@@ -1,13 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#define DAY 2
-#define MONTH 11
-#define YEAR 2021
 
-// Bulan Check
+// Global Variabel
+int DAY = 2,
+    MONTH = 11,
+    YEAR = 2021;
+
 char list_bulan[][15] = {"januari", "februari", "maret", "april", "mei", "juni", "juli", "augustus", "september", "november",
                          "oktober", "desember"};
+int list_day[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+// Bulan Check
 void BulanBerapa(int *bulan_num, char bulan[])
 {
     for (int i = 0; i <= 12; i++)
@@ -112,31 +116,19 @@ void HappyBirthday(int tanggal, int bulan, int tahun)
 {
     int jml_tahun, jml_bulan, jml_hari;
 
-    if (bulan > MONTH && tanggal > DAY)
+    if (tanggal > DAY)
     {
-        jml_hari = tanggal - DAY;
-        jml_bulan = 12 - (bulan - MONTH);
-        jml_tahun = (YEAR - tahun) - 1;
+        DAY = DAY + list_day[bulan - 1];
+        MONTH = MONTH - 1;
     }
-    else if (bulan > MONTH && tanggal < DAY)
+    if (bulan > MONTH)
     {
-        jml_hari = DAY - tanggal;
-        jml_bulan = 12 - (bulan - MONTH);
-        jml_tahun = (YEAR - tahun) - 1;
+        YEAR = YEAR - 1;
+        MONTH = MONTH + 12;
     }
-    else if (bulan < MONTH && tanggal > DAY)
-    {
-        jml_hari = tanggal - DAY;
-        jml_bulan = MONTH - bulan;
-        jml_tahun = YEAR - tahun;
-    }
-    else if (bulan < MONTH && tanggal < DAY)
-    {
-        jml_hari = DAY - tanggal;
-        jml_bulan = MONTH - bulan;
-        jml_tahun = YEAR - tahun;
-    }
-
+    jml_hari = DAY - tanggal;
+    jml_bulan = MONTH - bulan;
+    jml_tahun = YEAR - tahun;
     printf("[*] Usia \t\t: %d Tahun %d Bulan %d Hari\n", jml_tahun, jml_bulan, jml_hari);
 }
 
