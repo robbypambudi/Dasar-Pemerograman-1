@@ -25,16 +25,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#define DAY 2
-#define MONTH 11
-#define YEAR 2021
 
-// Bulan Check
+// Global Variabel
+int DAY = 2,
+    MONTH = 11,
+    YEAR = 2021;
 char list_bulan[][15] = {"januari", "februari", "maret", "april", "mei", "juni", "juli", "augustus", "september", "november",
                          "oktober", "desember"};
+int list_day[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+// Bulan Check
 void BulanBerapa(int *bulan_num, char bulan[])
 {
-    for (int i = 0; i <= 12; i++)
+    for (int i = 0; i < strlen(bulan); i++) // Menjadikan lowercase bulan agar mudah dicek
+    {
+        if (bulan[i] < 'a')
+            bulan[i] += 32;
+    }
+    for (int i = 0; i <= 12; i++) // Cek Bulan
     {
         if (strcmp(bulan, list_bulan[i]) == 0)
         {
@@ -71,7 +79,8 @@ bool validation(char nama_depan[], char nama_belakang[], int tanggal, char bulan
             return false;
         }
     }
-    if (!(tanggal >= 0 && tanggal <= 31))
+    // Cek Tanggal
+    if (!(tanggal >= 1 && tanggal <= 31))
     {
         printf("[*] Tanggal Tidak Valid\n");
         return false;
@@ -86,6 +95,7 @@ bool validation(char nama_depan[], char nama_belakang[], int tanggal, char bulan
             return false;
         }
     }
+    // Cek Anggka Bulan
     BulanBerapa(bulan_num, bulan);
     if (*bulan_num == -1)
     {
@@ -99,9 +109,7 @@ bool validation(char nama_depan[], char nama_belakang[], int tanggal, char bulan
         return false;
     }
 
-    // Cek Tanggal
-    if (!(tanggal >= 0 && tanggal <= 31))
-        return false;
+    // Data Valid
     return true;
 }
 
@@ -120,7 +128,7 @@ void Low_Upper(char nama_dep_bel[])
             continue;
 
         else if ((i) % 2 == 0)
-        { // Nilai dimulai dari 1, bukan 0
+        {
             if (nama_dep_bel[i] > 'Z')
                 nama_dep_bel[i] -= 32;
         }
@@ -130,36 +138,26 @@ void Low_Upper(char nama_dep_bel[])
                 nama_dep_bel[i] += 32;
         }
     }
+    return;
 }
 
 void HappyBirthday(int tanggal, int bulan, int tahun)
 {
     int jml_tahun, jml_bulan, jml_hari;
 
-    if (bulan > MONTH && tanggal > DAY)
+    if (tanggal > DAY)
     {
-        jml_hari = tanggal - DAY;
-        jml_bulan = 12 - (bulan - MONTH);
-        jml_tahun = (YEAR - tahun) - 1;
+        DAY = DAY + list_day[bulan - 1];
+        MONTH = MONTH - 1;
     }
-    else if (bulan > MONTH && tanggal < DAY)
+    if (bulan > MONTH)
     {
-        jml_hari = DAY - tanggal;
-        jml_bulan = 12 - (bulan - MONTH);
-        jml_tahun = (YEAR - tahun) - 1;
+        YEAR = YEAR - 1;
+        MONTH = MONTH + 12;
     }
-    else if (bulan < MONTH && tanggal > DAY)
-    {
-        jml_hari = tanggal - DAY;
-        jml_bulan = MONTH - bulan;
-        jml_tahun = YEAR - tahun;
-    }
-    else if (bulan < MONTH && tanggal < DAY)
-    {
-        jml_hari = DAY - tanggal;
-        jml_bulan = MONTH - bulan;
-        jml_tahun = YEAR - tahun;
-    }
+    jml_hari = DAY - tanggal;
+    jml_bulan = MONTH - bulan;
+    jml_tahun = YEAR - tahun;
 
     printf("[*] Usia \t\t: %d Tahun %d Bulan %d Hari\n", jml_tahun, jml_bulan, jml_hari);
 }
@@ -174,11 +172,11 @@ int main()
     int tanggal, tahun;
     int bulan_num;
 
-    printf("Masukan Nama Depan Anda : ");
+    printf("Masukan Nama Depan Anda \t: ");
     scanf("%s", nama_depan);
-    printf("Masukan Nama Belakang Anda : ");
+    printf("Masukan Nama Belakang Anda \t: ");
     scanf("%s", nama_belakang);
-    printf("Masukan Tanggal Lahir Anda (Tanggal(Angka) Bulan(Text) Tahun(angka)) : ");
+    printf("Masukan Tanggal Lahir Anda *Tanggal(Angka) *Bulan(Text) *Tahun(angka) : ");
     scanf("%d%s%d", &tanggal, bulan, &tahun);
 
     // Validasi Data
