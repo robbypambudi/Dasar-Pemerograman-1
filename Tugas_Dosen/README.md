@@ -8,7 +8,7 @@
 
 ### Deskripsi Tugas :
 
-**Buatlah Program dengan fungsi utama sebagai berikut :**
+**Buatlah Program dengan fungsi utama sebagai berikut :**<br>
 **Input:** Nama Depan, Nama Belakangm Kelahiran ( Tanggal, Bulan dan Tahun)
 Bulan ditulis dengan string
 
