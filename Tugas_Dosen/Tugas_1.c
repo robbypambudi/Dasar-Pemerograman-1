@@ -6,8 +6,8 @@
 int DAY = 2,
     MONTH = 11,
     YEAR = 2021;
-char list_bulan[][15] = {"januari", "februari", "maret", "april", "mei", "juni", "juli", "augustus", "september", "november",
-                         "oktober", "desember"};
+char list_bulan[][15] = {"januari", "februari", "maret", "april", "mei", "juni", "juli", "augustus", "september", "oktober",
+                         "november", "desember"};
 int list_day[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 // Bulan Check
@@ -100,7 +100,7 @@ void combinestring(char nama_depan[], char nama_belakang[], char nama_dep_bel[])
 
 void Low_Upper(char nama_dep_bel[])
 {
-    for (int i = 0; i <= strlen(nama_dep_bel); i++)
+    for (int i = 0; i < strlen(nama_dep_bel); i++)
     {
         if (nama_dep_bel[i] == ' ')
             continue;
@@ -123,6 +123,12 @@ void HappyBirthday(int tanggal, int bulan, int tahun)
 {
     int jml_tahun, jml_bulan, jml_hari;
 
+    if (tanggal > 2 && bulan >= 11 && tahun >= 2021)
+    {
+        printf("[*] Error, Program hanya menghitung sampai tanggal 02 November 2021\n");
+        return;
+    }
+
     if (tanggal > DAY)
     {
         DAY = DAY + list_day[bulan - 1];
@@ -133,6 +139,7 @@ void HappyBirthday(int tanggal, int bulan, int tahun)
         YEAR = YEAR - 1;
         MONTH = MONTH + 12;
     }
+
     jml_hari = DAY - tanggal;
     jml_bulan = MONTH - bulan;
     jml_tahun = YEAR - tahun;
