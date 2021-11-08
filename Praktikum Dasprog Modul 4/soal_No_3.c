@@ -1,38 +1,71 @@
 #include <stdio.h>
-
-void fungsi(int *N, int *M, int array[200][200])
+struct Bank
 {
-    int hasil = 0;
-
-    for (int x = 1; x <= *N; x++)
-    {
-        for (int y = 1; y <= *M; y++)
-        {
-
-            if (x != y)
-            {
-                hasil += *(*(array + x) + y);
-                printf("%d ", *(*(array + x) + y));
-            }
-        }
-    }
-    printf("\n");
-    printf("%d\n", hasil);
-}
+    int id;
+    char nama[25];
+    long int saldo;
+};
 
 int main()
 {
-    int N, M;
 
-    scanf("%d %d", &N, &M);
-    int array[200][200];
-
-    for (int i = 1; i <= M; i++)
+    int p;
+    scanf("%d", &p);
+    struct Bank bank[p];
+    for (int i = 0; i < p; i++)
     {
-        for (int j = 1; j <= N; j++)
+        scanf("%d %[^\n]", &bank[i].id, bank[i].nama);
+        bank[i].saldo = 100;
+    }
+    int j, id;
+    long int saldo_baru;
+    while (scanf("%d", &j) != 0)
+    {
+        if (j == 0)
         {
-            scanf("%d", *(array + i) + j);
+            break;
+        }
+        if (j == 1)
+        {
+            scanf("%d %ld", &id, &saldo_baru);
+            for (int i = 0; i < p; i++)
+            {
+                if (id == bank[i].id)
+                {
+                    bank[i].saldo += saldo_baru;
+                    if (bank[i].saldo > 1000)
+                    {
+                        bank[i].saldo -= 20;
+                    }
+                }
+            }
+        }
+
+        if (j == 2)
+        {
+            scanf("%d %ld", &id, &saldo_baru);
+            for (int i = 0; i < p; i++)
+            {
+                if (id == bank[i].id)
+                {
+                    if (bank[i].saldo < saldo_baru)
+                    {
+                        bank[i].saldo = 0;
+                    }
+                    else
+                    {
+                        bank[i].saldo -= saldo_baru;
+                    }
+                }
+            }
         }
     }
-    fungsi(&N, &M, array);
+    for (int i = 0; i < p; i++)
+    {
+        printf("Akun %d\n", i + 1);
+        printf("%d\n", bank[i].id);
+        printf("%s\n", bank[i].nama);
+        printf("%ld\n", bank[i].saldo);
+    }
+    return 0;
 }
