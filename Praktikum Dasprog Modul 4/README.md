@@ -648,7 +648,412 @@ int main()
 }
 ```
 
+## Soal No 4 :
+
+Malur sedang belajar hal baru yang sangat menyulitkan dia, yaitu pointer. Dia telah belajar sepanjang malam dan ingin mengaplikasikan apa yang telah ia buat. Problem yang ingin dia selesaikan sederhana namun harus diselesesaikan dengan pointer. Problemnya adalah sebagai berikut, diberikan sebuah matrix N x M. Setiap elemen terletak pada posisi baris i dan kolom j. Malur hanya ingin menghitung jumlah setiap elemen yang nilai i dan j nya tidak sama.
+
+```
+Pengerjaan hanya boleh menggunakan syntax pointer * tidak boleh menggunakan array [val1][val2], seperti saat scanf, printf, dan ketika mengakses elemen matrix. Untuk deklarasi variable array awal diperboleh kan menggunakan array[val1][val2].
+```
+
+### Input Format
+
+Baris pertama berisi 2 nilai yaitu M dan N. M Baris berikutnya berisi N buah bilangan matrix.
+
+```
+3 3
+1 2 3
+4 5 6
+7 8 9
+```
+
+### Constraints
+
+```
+2<=M<=15
+2<=N<=15
+2<=i<=M
+2<=j<=N
+2<=matrix[i][j]<=100
+```
+
+### Output Format
+
+Output yang dihasilkan adalah semua elemen matrix yang berada pada posisi baris i dan kolom j yang berbeda.
+
+```
+2 3 4 6 7 8
+30
+```
+
+### Sample Input
+
+```
+3 3
+1 2 3
+4 5 6
+7 8 9
+```
+
+### Sample Output 0
+
+```
+2 3 4 6 7 8
+30
+```
+
+### Langkah Penyelesaian
+
+-   Cara mengakses array pada pointer adalah seperti gambar berikut
+    <img src="https://i1.wp.com/aticleworld.com/wp-content/uploads/2018/04/2darray.jpg?resize=678%2C495&ssl=1" alt="Accses Array in Pointer">
+-   Dari gambar tersebut maka dapat dibuat sebuah kode sebagai berikut
+
+### Code
+
+```
+#include <stdio.h>
+
+void fungsi(int *N, int *M, int array[20][20]);
+
+int main()
+{
+    int N, M;
+
+    scanf("%d %d", &N, &M);
+    int array[20][20];
+
+    for (int i = 1; i <= M; i++)
+    {
+        for (int j = 1; j <= N; j++)
+        {
+            scanf("%d", *(array + i) + j);
+        }
+    }
+    fungsi(&N, &M, array);
+}
+void fungsi(int *N, int *M, int array[20][20])
+{
+    int hasil = 0;
+
+    for (int x = 1; x <= *N; x++)
+    {
+        for (int y = 1; y <= *M; y++)
+        {
+
+            if (x != y)
+            {
+                hasil += *(*(array + x) + y);
+                printf("%d ", *(*(array + x) + y));
+            }
+        }
+    }
+    printf("\n");
+    printf("%d\n", hasil);
+}
+```
+
+---
+
+## Soal No 5
+
+SYZi baru saja belajar pointer. Akan tetapi, SYZi masih belum begitu paham dengan pointer ini. Jadi SYZi memintamu untuk membuat program simulasi pointer. Program ini dapat menerima 3 jenis perintah : init, modify, print.
+
+Perintah init digunakan untuk membuat suatu variable. variabel yang bisa dibuat ada 2 saja, yaitu integer dan pointer to integer. format perintah init adalah sebagai berikut :
+
+<img src="https://s3.amazonaws.com/hr-assets/0/1636250707-ce26fcb314-poin1.jpeg" alt="Gambar 1"/>
+
+Jika akan membuat variabel biasa maka pointer dikosong kan, apabila akan membuat variabel pointer maka pointer diisi . Saat perintah init diharuskan untuk mengisi variabel, dengan kata lain (value) tidak boleh kosong. Isi variabel tak dapat diisi oleh nama variabel lain, dengan kata lain variabel biasa harus diisi angka dan variabel pointer harus diisi alamat variable biasa. Penulisan seperti no 3, 4, dan 5 tidak bisa dilakukan.
+
+Perintah modify digunakan untuk mengubah isi dari variabel yang sudah dibuat. format perintah modify adalah sebagai berikut :
+
+<img src="https://s3.amazonaws.com/hr-assets/0/1636250746-fe19ff3c99-poin2.jpeg" alt="Gambar 2"/>
+
+Jika akan merubah isi secara normal, maka pointer dikosongkan. Jika ingin merubah apa yang ditunjuk oleh sebuah pointer maka pointer diisi 1 pointer. value tidak dapat diisi nama variabel untuk mengisi variabel tersebut. Penulisan seperti no 4 dan 5 tidak bisa dilakukan.
+
+Perintah print digunakan untuk mengeluarkan output berupa isi variabel. Format perintah print adalah sebagai berikut:
+
+<img src="https://s3.amazonaws.com/hr-assets/0/1636251070-5ff359b024-poin3.jpeg" alt="Gambar 3"/>
+
+Variabel yang dapat diprint hanyalah variabel biasa dan bukan variabel pointer. Penulisan seperti no 2, 3, dan 4 tidak bisa dilakukan.
+
+### Input Format
+
+Baris pertama merupakan bilangan bulat positif N yang merupakan banyak command masukan Input sesuai syntax diatas. Input yang dimasukkan tidak mungkin melanggar peraturan diatas.
+
+### Constraints
+
+```
+0 < N < 20
+0 < panjang nama variabel < 10
+0 < jumlah variabel yang dibuat < 11
+value yang dapat disimpan hanyalah sebatas besar int di C.
+```
+
+### Output Format
+
+Program hanya akan mengeluarkan output saat ada perintah print.
+
+### Sample Input 0
+
+```
+4
+init var1 5
+init var2 10
+print var1
+print var2
+```
+
+### Sample Output 0
+
+```
+5
+10
+```
+
+### Langkah Penyelesaian
+
+1. Membuat Fungsi Init, Modify dan Pointer
+2. Fungsi dibuat sesuai dengan deskripsi diatas
+3. Selesai
+
+### Code
+
+```
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+struct Data
+{
+    char nama[50];
+    int *nilai;
+    bool ispointer;
+};
+
+// Deklarasi Fungsi prototipe
+void init(struct Data *data, int N, int list);
+void modify(struct Data *data, int N, int list);
+void print(struct Data *data, int N);
+
+int main()
+{
+
+    int N, X = 0;
+    scanf("%d", &N);
+
+    // Inisialisasi Variabel
+    struct Data data[N];
+    char perintah[20];
+
+    for (int i = 0; i < N; i++)
+    {
+        scanf("%s", perintah);
+
+        if (strcmp(perintah, "init") == 0)
+        {
+            init(data, N, X++);
+        }
+
+        if (strcmp(perintah, "modify") == 0)
+        {
+            modify(data, N, X);
+        }
+
+        if (strcmp(perintah, "print") == 0)
+        {
+            print(data, X);
+        }
+    }
+    return 0;
+}
+
+// Fungsi init
+
+void init(struct Data *data, int N, int list)
+
+{
+    // Inisialisasi Variabel
+    char variabel_1[15], variabel_2[15], variabel_3[15], variabel_4[15];
+    // printf("Init Jalan\n");
+    scanf("%s", variabel_1);
+
+    // Dengan *
+    if (strcmp(variabel_1, "*") == 0)
+    {
+        // printf("* Jalan");
+        data[list].nilai = malloc(sizeof(int));
+        data[list].ispointer = true;
+
+        scanf("%s %s", variabel_2, variabel_3);
+        int panjang = strlen(variabel_2);
+        char *temp = variabel_3 + 1;
+        strncpy(variabel_4, temp, panjang - 1);
+
+        for (int i = 0; i < list; i++)
+        {
+            if (strcmp(variabel_4, data[i].nama) == 0)
+            {
+                strcpy(data[list].nama, variabel_2);
+                data[list].nilai = data[i].nilai;
+                // printf("Berhasil Disi ke %s", data[list].nama);
+            }
+        }
+    }
+    else
+    {
+        // printf("Berhasil %d\n", list);
+        data[list].nilai = malloc(sizeof(int));
+        data[list].ispointer = false;
+        int nilai = 0;
+        scanf("%d", &nilai);
+        strcpy(data[list].nama, variabel_1);
+        *data[list].nilai = nilai;
+        // printf("%s %d\n", data[list].nama, *data[list].nilai);
+    }
+}
+
+void modify(struct Data *data, int N, int list)
+
+{
+
+    char variabel_1[15], variabel_2[15], variabel_3[15];
+
+    scanf("%s", variabel_1);
+    // printf("%s\n",variabel_1);
+
+    if (strcmp(variabel_1, "*") == 0)
+    {
+        // printf("Jalan\n");
+        int nilai;
+        scanf("%s %d", variabel_2, &nilai);
+
+        for (int i = 0; i < N; i++)
+        {
+            if (strcmp(variabel_2, data[i].nama) == 0)
+            {
+                *data[i].nilai = nilai;
+            }
+        }
+    }
+
+    else
+    {
+        // printf("modify Jalan\n");
+        scanf(" %s", variabel_2);
+        // printf("2 %s \n", variabel_2);
+
+        if (variabel_2[0] >= '0' && variabel_2[0] <= '9')
+        {
+            // printf("angka terdeteksi %s\n", variabel_2);
+
+            int angka = 0;
+            int panjang = strlen(variabel_2);
+            for (int i = 0; i < panjang; i++)
+            {
+                angka = angka * 10 + variabel_2[i] - '0';
+            }
+
+            for (int i = 0; i < N; i++)
+            {
+                if (strcmp(variabel_1, data[i].nama) == 0)
+                {
+                    // printf("Data %d", angka);
+                    *data[i].nilai = angka;
+                    break;
+                }
+            }
+        }
+        else if (variabel_2[0] == '&')
+        {
+            // printf("& Jalan\n");
+            char *temp = variabel_2 + 1;
+            int panjang = strlen(variabel_1);
+            strncpy(variabel_3, temp, panjang - 1);
+            // printf("Variabel 1 : %s, Vaiabel 2 : %s", variabel_1, variabel_3);
+            int sudah = 0;
+            for (int i = 0; i < N; i++)
+            {
+                if (strcmp(variabel_1, data[i].nama) == 0)
+                {
+                    for (int j = 0; j < N; j++)
+                    {
+                        if (strcmp(variabel_3, data[j].nama) == 0)
+                        {
+                            // printf("Berhasil\n");
+                            *data[i].nilai = *data[j].nilai;
+                            sudah = 1;
+                            break;
+                        }
+                    }
+                }
+                if (sudah)
+                    break;
+            }
+        }
+    }
+    return;
+}
+
+void print(struct Data *data, int N)
+{
+    char variabel[15];
+    // printf("print jalan\n");
+    scanf("%s", variabel);
+    for (int i = 0; i < N; i++)
+    {
+        // printf("%d\n", i);
+        if (strcmp(variabel, data[i].nama) == 0 && !data[i].ispointer)
+        {
+            printf("%d\n", *data[i].nilai);
+        }
+    }
+    return;
+}
+```
+
+---
+
 ## Soal No 6
+
+Universitas SYZi mengadakan sebuah perlombaan bernama Schoomatics. Anda sebagai budak kepanitiaan diberi mandat untuk membuat program pemeringkatan peserta lomba dari data yang belum urut. Kolom dari data tersebut adalah nama, nilai 1, nilai 2, dan nilai 3. Anda diminta untuk mengurutkan data tersebut berdasarkan nilai 3. Jika terdapat nama dengan nilai 3 yang sama maka urutkan berdasarkan nilai 2. Jika terdapat nama dengan nilai 2 yang sama maka urutkan berdasarkan nilai 1. Jika masih ada yang sama juga maka urutkan berdasarkan nama. Nama diurutkan berdasarkat ASCII.
+
+### Input Format
+
+baris pertama adalah jumlah nama n n baris berikutnya ada 4 input yaitu nama dan 3 nilai nama n1 n2 n3
+
+### Constraints
+
+0 < nilai < 100
+
+### Output Format
+
+data yang sudah terurut
+
+### Sample Input 0
+
+```
+4
+clarence 100 99 1
+dzikri 24 03 03
+erki 86 96 2
+frederick 69 69 69
+```
+
+### Sample Output 0
+
+```
+frederick 69 69 69
+dzikri 24 3 3
+erki 86 96 2
+clarence 100 99 1
+```
+
+### Langkah Penyelesaian
+
+1. Membuat Fungsi untuk menentukan rangking
+2. Rangking diurutkan dari nilai ke 3 Jika sama ke nilai ke 2 dan jika masi sama ke nilai 1
+3. Apabila masi sama maka diurutkan berdasarkan bilangan ASCII
+4. Selesai
 
 ```
 #include <stdio.h>
