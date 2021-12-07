@@ -13,7 +13,7 @@ input berhenti jika N = 0
 
 Constraints
 
-N ≤ 1000
+N < 1000
 
 Output Format
 
